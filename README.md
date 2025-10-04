@@ -9,19 +9,20 @@ This project simulates a real-world data engineering scenario where pipelines mu
 
 ##  Pipeline Overview
 
-### 1. **Extract**
-- Pulls daily sales and order data from a PostgreSQL database using SQL.
-- Saves the raw data as a CSV file.
 
-### 2. **Data Quality Check**
-- Ensures there are no missing values.
-- Checks for non-positive prices or quantities.
+- **1. Extract :**  
+  This task connects to a PostgreSQL database and extracts the daily sales records.  
+  The extracted data is saved locally as a **CSV file**, which acts as the raw data source for the rest of the pipeline.  
 
-### 3. **Transform**
-- Calculates **total revenue per day** and saves the aggregated dataset.
+- **2. Data Quality Check :**  
+  Before performing any transformations, the pipeline validates the extracted dataset to ensure that it’s not empty and contains the expected fields. This step helps catch potential data issues early.  
 
-### 4. **Visualize**
-- Generates a **time series plot** of daily revenue and saves it as a PNG image.
+- **3. Transform :**  
+  This task reads the extracted data, performs a **group-by aggregation** to calculate total revenue per day, and saves the results into a **cleaned CSV file**. This file represents the transformed dataset ready for analysis.  
+
+- **4. Visualize:**  
+  Finally, the pipeline generates a **time series plot** that shows daily total revenue trends. This visualization helps quickly identify sales patterns and track performance over time.
+
 
 ## DAG Graph
 
